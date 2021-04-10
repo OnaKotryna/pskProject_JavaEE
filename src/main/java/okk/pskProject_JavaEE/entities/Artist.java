@@ -24,15 +24,13 @@ public class Artist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "NAME")
     private String name;
 
-    @Column(name = "LAST_NAME")
-    private String lastName;
+    @Column(name = "COUNTRY")
+    private String country;
 
     @OneToMany(mappedBy = "artist")
     private List<Album> albums = new ArrayList<>();
 
-    public String Test(){
-        return "Testas: artisto klase";
-    }
 }

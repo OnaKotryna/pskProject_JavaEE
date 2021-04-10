@@ -14,8 +14,8 @@
 <h:body>
     <h:link outcome="index" value="Artists"/>
     <h:outputText value=" | "/>
-    <h:link outcome="artistsDetails?artistId=#{displayAlbum.album.artist.id}" value="#{displayAlbum.album.artist.name} Albums"/>
-
+    <h:link outcome="artistsDetails?artistId=#{displayAlbum.album.artist.id}" value="#{displayAlbum.album.artist.name}"/>
+    <h:outputText value=" | #{displayAlbum.album.title}"/>
     <h2>#{displayAlbum.album.title} details: </h2>
     <h:outputText value="Artist: #{displayAlbum.album.artist.name}"/><br/>
     <h:outputText value="Length: #{displayAlbum.album.length}"/><br/>

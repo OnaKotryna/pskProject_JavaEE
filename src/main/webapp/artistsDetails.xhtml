@@ -13,7 +13,11 @@
 </h:head>
 <h:body>
     <h:link outcome="index" value="Artists"/>
-    <h2>Albums of #{albumsForArtist.artist.name}:</h2>
+    <h:outputText value=" | #{albumsForArtist.artist.name}"/>
+
+    <h2>#{albumsForArtist.artist.name}</h2>
+    <h:outputText value="Country: #{albumsForArtist.artist.country}"/>
+    <h3>Released Albums:</h3>
     <ol>
         <ui:repeat value="#{albumsForArtist.artist.albums}" var="album">
             <li>
@@ -21,7 +25,7 @@
             </li>
         </ui:repeat>
     </ol>
-    <h3>Add Album to the Discography</h3>
+    <h4>Add Album to the Discography:</h4>
     <h:form>
         <h:inputText a:placeholder="title" value="#{albumsForArtist.albumToCreate.title}" required="true" /> <br/>
         <h:inputText a:placeholder="song number" value="#{albumsForArtist.albumToCreate.songNumber}" required="true" /><br/>

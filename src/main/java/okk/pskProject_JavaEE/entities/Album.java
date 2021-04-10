@@ -36,7 +36,4 @@ public class Album implements Serializable{
     @JoinTable(name = "ALBUM_RECORD")
     private List<RecordLabel> recordLabels = new ArrayList<>();
 
-    public String Test(){
-        return "Testas: albumo klase";
-    }
 }

@@ -28,8 +28,4 @@ public class RecordLabel implements Serializable {
     @ManyToMany(mappedBy = "recordLabels")
     private List<Album> albums = new ArrayList<>();
 
-    public String Test(){
-        return "Testas: recordLabel klase";
-    }
-
 }

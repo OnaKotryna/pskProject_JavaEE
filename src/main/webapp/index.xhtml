@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xml:lang="en" lang="en">
 <h:head>
@@ -14,8 +15,10 @@
             <li><h:link value="#{artist.name}" outcome="artistsDetails?artistId=#{artist.id}" /></li>
         </ui:repeat>
     </ol>
+    <h4>Add Artist:</h4>
     <h:form>
-        <h:inputText value="#{artists.artistToCreate.name}" required="true" />
+        <h:inputText a:placeholder="title" value="#{artists.artistToCreate.name}" required="true" /><br/>
+        <h:inputText a:placeholder="country" value="#{artists.artistToCreate.country}" required="true" /><br/>
         <h:commandButton value="Add new Artist" action="#{artists.createArtist}" />
     </h:form>
 </h:body>
