@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "RecordLabel.findAll", query = "select rl from RecordLabel as rl")
+})
 @Table(name = "RECORDLABEL")
 @Getter @Setter
 public class RecordLabel implements Serializable {

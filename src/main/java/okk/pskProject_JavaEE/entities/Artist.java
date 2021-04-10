@@ -10,9 +10,9 @@ import java.util.List;
 
 @Entity
 
-/*@NamedQueries({
+@NamedQueries({
         @NamedQuery(name = "Artist.findAll", query = "select ar from Artist as ar")
-})*/
+})
 
 @Table(name = "ARTIST")
 @Getter @Setter
