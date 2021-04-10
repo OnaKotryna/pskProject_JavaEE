@@ -8,6 +8,15 @@
     <title>PSK Project - Record Shop</title>
 </h:head>
 <h:body>
-    <h2>Le Test</h2>
+    <h2>Artists</h2>
+    <ol>
+        <ui:repeat value="#{artists.allArtists}" var="artist">
+            <li><h:link value="#{artist.name}" outcome="artistsDetails?artistId=#{artist.id}" /></li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText value="#{artists.artistToCreate.name}" required="true" />
+        <h:commandButton value="Add new Artist" action="#{artists.createArtist}" />
+    </h:form>
 </h:body>
 </html>
