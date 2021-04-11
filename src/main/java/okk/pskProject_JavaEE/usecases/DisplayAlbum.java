@@ -25,8 +25,8 @@ public class DisplayAlbum {
     private void init() {
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-        Integer playerId = Integer.parseInt(requestParameters.get("albumId"));
-        this.album = albumsDAO.findOne(playerId);
+        Integer albumId = Integer.parseInt(requestParameters.get("albumId"));
+        this.album = albumsDAO.findOne(albumId);
     }
 
 }

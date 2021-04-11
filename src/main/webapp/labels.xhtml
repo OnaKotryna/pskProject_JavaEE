@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xml:lang="en" lang="en">
+<h:head>
+    <title>Record labels</title>
+</h:head>
+<h:body>
+
+    <h:outputText value="Labels || "/>
+    <h:link outcome="index" value="Artists"/>
+
+    <h2>Record Labels</h2>
+
+        <ui:repeat value="#{recordLabels.allLabels}" var="lab">
+            <h:outputText value="#{lab.label}"/>
+            <ol>
+                <ui:repeat value="#{lab.albums}" var="alb">
+                    <li><h:link value="#{alb.title}" outcome="albumDetails?albumId=#{alb.id}"/></li>
+                </ui:repeat>
+            </ol>
+        </ui:repeat>
+
+    <h4>Add Label:</h4>
+    <h:form>
+        <h:inputText a:placeholder="label" value="#{recordLabels.labelToCreate.label}" required="true" /><br/>
+        <h:inputText a:placeholder="country" value="#{recordLabels.labelToCreate.country}" required="true" /><br/>
+        <h:commandButton value="Add Label" action="#{recordLabels.createLabel}" />
+    </h:form>
+</h:body>
+</html>

@@ -31,6 +31,7 @@ public class Artists {
         this.artistsDAO.persist(artistToCreate);
         return "index?faces-redirect=true";
     }
+
     private void loadAllArtists() {
         this.allArtists = artistsDAO.loadAll();
     }

@@ -23,7 +23,11 @@ public class RecordLabel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "LABEL")
     private String label;
+
+    @Column(name = "COUNTRY")
+    private String country;
 
     @ManyToMany(mappedBy = "recordLabels")
     private List<Album> albums = new ArrayList<>();

@@ -6,9 +6,12 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xml:lang="en" lang="en">
 <h:head>
-    <title>PSK Project - Record Shop</title>
+    <title>Record Shop</title>
 </h:head>
 <h:body>
+    <h:link outcome="labels" value="Labels"/>
+    <h:outputText value=" || Artists"/>
+
     <h2>Artists</h2>
     <ol>
         <ui:repeat value="#{artists.allArtists}" var="artist">
@@ -19,7 +22,7 @@
     <h:form>
         <h:inputText a:placeholder="title" value="#{artists.artistToCreate.name}" required="true" /><br/>
         <h:inputText a:placeholder="country" value="#{artists.artistToCreate.country}" required="true" /><br/>
-        <h:commandButton value="Add new Artist" action="#{artists.createArtist}" />
+        <h:commandButton value="Add Artist" action="#{artists.createArtist}" />
     </h:form>
 </h:body>
 </html>

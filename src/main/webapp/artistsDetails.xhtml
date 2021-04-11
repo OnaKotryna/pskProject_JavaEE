@@ -9,9 +9,12 @@
        xmlns:f="http://java.sun.com/jsf/core"
        xml:lang="en" lang="en">
 <h:head>
-    <title>PSK Project - Artists</title>
+    <title>Artists</title>
 </h:head>
 <h:body>
+
+    <h:link outcome="labels" value="Labels"/>
+    <h:outputText value=" || "/>
     <h:link outcome="index" value="Artists"/>
     <h:outputText value=" | #{albumsForArtist.artist.name}"/>
 
@@ -31,7 +34,7 @@
         <h:inputText a:placeholder="song number" value="#{albumsForArtist.albumToCreate.songNumber}" required="true" /><br/>
         <h:inputText a:placeholder="length" value="#{albumsForArtist.albumToCreate.length}" required="true" /> <br/>
         <h:commandButton value="Add Album" action="#{albumsForArtist.createAlbum}" >
-            <f:param name="artistId" value="#{albumsForArtist.artist.id}" />
+            <f:param name="artistId" value="#{albumsForArtist.artist.id}"/>
         </h:commandButton>
     </h:form>
 </h:body>
