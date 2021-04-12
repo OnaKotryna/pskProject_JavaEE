@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import okk.pskProject_JavaEE.entities.Album;
 import okk.pskProject_JavaEE.entities.Artist;
-import okk.pskProject_JavaEE.interceptors.LoggedInvocation;
 import okk.pskProject_JavaEE.persistence.AlbumsDAO;
 import okk.pskProject_JavaEE.persistence.ArtistsDAO;
 
@@ -40,7 +39,6 @@ public class AlbumsForArtist implements Serializable {
     }
 
     @Transactional
-    /*@LoggedInvocation*/
     public String createAlbum() {
         albumToCreate.setArtist(this.artist);
         albumsDAO.persist(albumToCreate);

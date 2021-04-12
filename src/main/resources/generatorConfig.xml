@@ -26,5 +26,7 @@
         <table schema="public" tableName="recordLabel">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
         </table>
+        <table schema="public" tableName="album_record">
+        </table>
     </context>
 </generatorConfiguration>

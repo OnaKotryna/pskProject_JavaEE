@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xml:lang="en" lang="en">
+<h:head>
+    <title>Title</title>
+</h:head>
+<h:body>
+    <h:link value="Back" outcome="/index"/>
+    <h:outputText value=" || MyBatis | "/>
+    <h:link outcome="/mybatis/artists" value="Artists"/>
+    <h:outputText value=" | #{artistAlbumsMyBatis.artist.name}"/>
+
+    <h2>#{artistAlbumsMyBatis.artist.name}</h2>
+    <h:outputText value="Country: #{artistAlbumsMyBatis.artist.country}"/>
+    <h3>Released Albums:</h3>
+    <ol>
+        <ui:repeat value="#{artistAlbumsMyBatis.getAlbums(artistAlbumsMyBatis.artist.id)}" var="album">
+            <li>
+                <h:link  value="#{album.title}" outcome="/mybatis/albumDetails?albumId=#{album.id}"/>
+            </li>
+        </ui:repeat>
+    </ol>
+    <h4>Add Album to the Discography:</h4>
+    <h:form>
+        <h:inputText a:placeholder="title" value="#{artistAlbumsMyBatis.albumToCreate.title}" required="true" /> <br/>
+        <h:inputText a:placeholder="song number" value="#{artistAlbumsMyBatis.albumToCreate.songNumber}" required="true" /><br/>
+        <h:inputText a:placeholder="length" value="#{artistAlbumsMyBatis.albumToCreate.length}" required="true" /> <br/>
+        <h:commandButton value="Add Album" action="#{artistAlbumsMyBatis.createAlbum}" >
+            <f:param name="artistId" value="#{artistAlbumsMyBatis.artist.id}"/>
+        </h:commandButton>
+    </h:form>
+
+</h:body>
+</html>
