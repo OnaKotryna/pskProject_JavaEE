@@ -2,9 +2,7 @@ package okk.pskProject_JavaEE.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
-import okk.pskProject_JavaEE.entities.Album;
 import okk.pskProject_JavaEE.entities.RecordLabel;
-import okk.pskProject_JavaEE.persistence.AlbumsDAO;
 import okk.pskProject_JavaEE.persistence.RecordLabelDAO;
 
 import javax.annotation.PostConstruct;
@@ -18,9 +16,6 @@ public class RecordLabels {
 
     @Inject
     private RecordLabelDAO labelDAO;
-
-    @Inject
-    private AlbumsDAO albumsDAO;
 
     @Getter @Setter
     private RecordLabel labelToCreate = new RecordLabel();
@@ -42,4 +37,5 @@ public class RecordLabels {
     private void loadAllLabels(){
         this.allLabels = labelDAO.loadAll();
     }
+
 }

@@ -28,6 +28,19 @@
             <li><h:outputText value="#{lab.label}"/></li>
         </ui:repeat>
     </ol> <br/>
-
+    <h4>Add Label:</h4>
+    <h:form>
+        <h:inputText a:placeholder="record label id" value="#{displayAlbum.labelIdToAdd}" required="true" /><br/>
+        <h:commandButton value="Add Record Label" action="#{displayAlbum.addLabel()}">
+            <f:param name="albumId" value="#{displayAlbum.album.id}"/>
+            <f:param name="labelId" value="#{displayAlbum.labelIdToAdd}"/>
+        </h:commandButton>
+    </h:form>
+    <h5>Record Label List:</h5>
+    <ol>
+        <ui:repeat value="#{recordLabels.allLabels}" var="lab">
+            <li><h:outputText value="#{lab.label}"/></li>
+        </ui:repeat>
+    </ol>
 </h:body>
 </html>

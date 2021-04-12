@@ -1,12 +1,10 @@
 package okk.pskProject_JavaEE.persistence;
 
 import okk.pskProject_JavaEE.entities.Album;
-import okk.pskProject_JavaEE.entities.Artist;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import java.util.List;
 
 @ApplicationScoped
