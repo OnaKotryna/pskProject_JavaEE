@@ -17,7 +17,7 @@
   </resultMap>
 
   <select id="selectAlbums" parameterType="java.lang.Integer" resultType="Album">
-    select a.id, a.title,
+    select a.id, a.title
     FROM public.album a
     WHERE a.artist_id = #{id,jdbcType=INTEGER}
   </select>

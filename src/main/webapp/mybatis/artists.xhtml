@@ -21,8 +21,8 @@
         </ui:repeat>
     </ol>
     <h:form>
-        <h:inputText value="#{artistsMyBatis.artistToCreate.name}" required="true" /> <br/>
-        <h:inputText value="#{artistsMyBatis.artistToCreate.country}" required="true" /> <br/>
+        <h:inputText a:placeholder="name" value="#{artistsMyBatis.artistToCreate.name}" required="true" /> <br/>
+        <h:inputText a:placeholder="country" value="#{artistsMyBatis.artistToCreate.country}" required="true" /> <br/>
         <h:commandButton value="Add Artist" action="#{artistsMyBatis.createArtist}" />
     </h:form>
 </h:body>
