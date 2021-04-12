@@ -25,7 +25,4 @@ public class RecordLabelDAO {
         return em.find(RecordLabel.class, id);
     }
 
-    public RecordLabel update(RecordLabel recordLabel){
-        return em.merge(recordLabel);
-    }
 }
