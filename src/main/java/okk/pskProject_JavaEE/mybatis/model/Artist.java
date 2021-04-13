@@ -70,6 +70,6 @@ public class Artist {
         this.name = name;
     }
 
-
+    @Getter @Setter
     private List<Album> albums = new ArrayList<>();
 }

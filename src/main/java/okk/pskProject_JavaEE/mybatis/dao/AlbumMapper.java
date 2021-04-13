@@ -33,6 +33,4 @@ public interface AlbumMapper {
      */
     int updateByPrimaryKey(Album record);
 
-   List<Album> selectAlbums(Integer id);
-
 }

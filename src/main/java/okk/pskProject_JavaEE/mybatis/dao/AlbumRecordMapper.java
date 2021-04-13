@@ -25,5 +25,4 @@ public interface AlbumRecordMapper {
      */
     List<AlbumRecord> selectAll();
 
-    List<Recordlabel> getLabels(Integer id);
 }

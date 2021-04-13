@@ -6,6 +6,7 @@ import okk.pskProject_JavaEE.mybatis.dao.AlbumMapper;
 import okk.pskProject_JavaEE.mybatis.dao.AlbumRecordMapper;
 import okk.pskProject_JavaEE.mybatis.dao.RecordlabelMapper;
 import okk.pskProject_JavaEE.mybatis.model.Album;
+import okk.pskProject_JavaEE.mybatis.model.Artist;
 import okk.pskProject_JavaEE.mybatis.model.Recordlabel;
 
 import javax.annotation.PostConstruct;
@@ -41,7 +42,11 @@ public class DisplayAlbumMyBatis {
 
     @Transactional
     public List<Recordlabel> getLabels(){
-        return albumRecordMapper.getLabels(album.getId());
+        return albumMapper.selectByPrimaryKey(album.getId()).getRecordlabels();
+    }
+
+    public Artist getArtist(){
+        return albumMapper.selectByPrimaryKey(album.getId()).getArtist();
     }
 
 }

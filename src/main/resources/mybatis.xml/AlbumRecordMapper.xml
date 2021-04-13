@@ -28,11 +28,4 @@
     select ALBUMS_ID, RECORDLABELS_ID
     from PUBLIC.ALBUM_RECORD
   </select>
-
-  <select id="getLabels" resultType="Recordlabel">
-    SELECT rl.id, rl.label
-    FROM public.recordlabel rl
-           JOIN public.album_record ar on rl.id = ar.recordlabels_id
-    WHERE ar.recordlabels_id = #{id,jdbcType=INTEGER}
-  </select>
 </mapper>

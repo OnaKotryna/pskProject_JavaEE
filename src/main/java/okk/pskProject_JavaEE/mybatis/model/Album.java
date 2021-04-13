@@ -115,5 +115,6 @@ public class Album {
     @Getter @Setter
     private Artist artist;
 
+    @Getter @Setter
     private List<Recordlabel> recordlabels = new ArrayList<>();
 }

@@ -13,14 +13,14 @@
     <result column="TITLE" jdbcType="VARCHAR" property="title" />
     <result column="ARTIST_ID" jdbcType="INTEGER" property="artistId" />
 
+    <association property="artist"
+                 columnPrefix="artist_"
+                 resultMap="okk.pskProject_JavaEE.mybatis.dao.ArtistMapper.BaseResultMap"/>
 
+    <collection property="recordlabels" javaType="ArrayList"
+                ofType="Recordlabel" column="id"
+                select="selectLabelsForAlbum"/>
   </resultMap>
-
-  <select id="selectAlbums" parameterType="java.lang.Integer" resultType="Album">
-    select a.id, a.title
-    FROM public.album a
-    WHERE a.artist_id = #{id,jdbcType=INTEGER}
-  </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
@@ -73,5 +73,11 @@
     -->
     select ID, LENGTH, SONG_NUMBER, TITLE, ARTIST_ID
     from PUBLIC.ALBUM
+  </select>
+  <select id="selectLabelsForAlbum" resultType="Recordlabel">
+    SELECT rl.id, rl.label
+    FROM public.recordlabel rl
+           JOIN public.album_record ar on rl.id = ar.recordlabels_id
+    WHERE ar.albums_id = #{id,jdbcType=INTEGER}
   </select>
 </mapper>

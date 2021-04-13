@@ -20,8 +20,9 @@
             <li><h:link value="#{artist.name}" outcome="artistDetails?artistId=#{artist.id}" /></li>
         </ui:repeat>
     </ol>
+    <h4>Add Artist:</h4>
     <h:form>
-        <h:inputText a:placeholder="name" value="#{artistsMyBatis.artistToCreate.name}" required="true" /> <br/>
+        <h:inputText a:placeholder="title" value="#{artistsMyBatis.artistToCreate.name}" required="true" /> <br/>
         <h:inputText a:placeholder="country" value="#{artistsMyBatis.artistToCreate.country}" required="true" /> <br/>
         <h:commandButton value="Add Artist" action="#{artistsMyBatis.createArtist}" />
     </h:form>

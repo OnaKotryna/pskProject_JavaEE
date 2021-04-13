@@ -40,12 +40,14 @@ public class ArtistAlbumsMyBatis {
 
     @Transactional
     public String createAlbum(){
+        albumToCreate.setArtist(this.artist);
+        albumToCreate.setArtistId(this.artist.getId());
         albumMapper.insert(albumToCreate);
         return "/mybatis/artistDetails?faces-redirect=true&artistId=" + this.artist.getId();
     }
 
     public List<Album> getAlbums(Integer id){
-        return albumMapper.selectAlbums(id);
+        return artistMapper.selectByPrimaryKey(artist.getId()).getAlbums();
     }
 
 }
