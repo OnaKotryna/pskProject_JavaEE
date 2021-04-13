@@ -26,12 +26,6 @@ public class DisplayAlbumMyBatis {
     @Inject
     private AlbumMapper albumMapper;
 
-    @Inject
-    private RecordlabelMapper recordlabelMapper;
-
-    @Inject
-    private AlbumRecordMapper albumRecordMapper;
-
     @PostConstruct
     public void init(){
         Map<String, String> requestParameters =
