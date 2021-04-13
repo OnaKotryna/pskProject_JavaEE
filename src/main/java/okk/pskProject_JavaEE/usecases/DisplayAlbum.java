@@ -29,6 +29,9 @@ public class DisplayAlbum {
     @Getter @Setter
     private Integer labelIdToAdd;
 
+    @Getter @Setter
+    private String titleToChange;
+
     @PostConstruct
     private void init() {
         Map<String, String> requestParameters =
@@ -37,11 +40,16 @@ public class DisplayAlbum {
         this.album = albumsDAO.findOne(albumId);
     }
 
-
     @Transactional
     public void addLabel(){
         RecordLabel labelToAdd = labelDAO.findOne(labelIdToAdd);
         this.album.getRecordLabels().add(labelToAdd);
+        albumsDAO.update(this.album);
+    }
+
+    @Transactional
+    public void changeTitle(){
+        this.album.setTitle(titleToChange);
         albumsDAO.update(this.album);
     }
 }

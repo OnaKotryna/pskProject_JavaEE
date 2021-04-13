@@ -21,6 +21,12 @@
     <h:link outcome="artistsDetails?artistId=#{displayAlbum.album.artist.id}" value="#{displayAlbum.album.artist.name}"/>
     <h:outputText value=" | #{displayAlbum.album.title}"/>
     <h2>#{displayAlbum.album.title} details: </h2>
+    <h:form>
+        <h:inputText a:placeholder="new title" value="#{displayAlbum.titleToChange}" required="true" /><br/>
+        <h:commandButton value="Change Title" action="#{displayAlbum.changeTitle()}">
+            <f:param name="albumId" value="#{displayAlbum.album.id}"/>
+        </h:commandButton>
+    </h:form>
     <h:outputText value="Artist: #{displayAlbum.album.artist.name}"/><br/>
     <h:outputText value="Length: #{displayAlbum.album.length}"/><br/>
     <h:outputText value="Track nr: #{displayAlbum.album.songNumber}"/><br/>
