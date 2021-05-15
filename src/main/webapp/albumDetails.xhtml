@@ -22,20 +22,38 @@
     <h:outputText value=" | #{displayAlbum.album.title}"/>
     <h2>#{displayAlbum.album.title} details: </h2>
     <h:form>
-        <h:inputText a:placeholder="new title" value="#{displayAlbum.titleToChange}" required="true" /><br/>
-        <h:commandButton value="Change Title" action="#{displayAlbum.changeTitle()}">
-            <f:param name="albumId" value="#{displayAlbum.album.id}"/>
-        </h:commandButton>
+        <h:inputText a:placeholder="new title" value="#{updateAlbumDetails.album.title}" required="true" /><br/>
+        <h:commandButton value="Change Title" action="#{updateAlbumDetails.updateAlbumTitle()}">
+            <f:param name="albumId" value="#{updateAlbumDetails.album.id}"/>
+        </h:commandButton><br/>
+        <h:outputText value="Title was already set by other user. If you want to override it - try again." rendered="#{param['error'] == 'optimistic-lock-exception'}" />
     </h:form>
     <h:outputText value="Artist: #{displayAlbum.album.artist.name}"/><br/>
     <h:outputText value="Length: #{displayAlbum.album.length}"/><br/>
     <h:outputText value="Track nr: #{displayAlbum.album.songNumber}"/><br/>
+    <h:outputText value="Price: #{displayAlbum.album.price}"/><br/>
     <h:outputText value="Record Labels: "/><br/>
     <ol>
         <ui:repeat value="#{displayAlbum.album.recordLabels}" var="lab">
             <li><h:outputText value="#{lab.label}"/></li>
         </ui:repeat>
     </ol> <br/>
+    <h3>Set Album Price</h3>
+    <h:form>
+        <h:outputText value="Price: "/>
+        <h:inputText a:placeholder="Enter the Price" value="#{updateAlbumDetails.album.price}" required="true" />
+        <h:commandButton value="Set Price" action="#{updateAlbumDetails.updateAlbumPrice()}">
+            <f:param name="albumId" value="#{updateAlbumDetails.album.id}" />
+        </h:commandButton><br/>
+        <h:outputText value="Price was already set by other user. If you want to override it - try again." rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+    </h:form>
+    <h:form>
+        <h:outputText value="Generate the Price of the Album?" /><br/>
+        <h:commandButton value="Generate" disabled="#{generateAlbumPrice.priceGeneratorRunning}" action="#{generateAlbumPrice.generateNewAlbumPrice(displayAlbum.album)}">
+            <f:param name="albumId" value="#{updateAlbumDetails.album.id}" />
+        </h:commandButton><br/>
+        <h:outputText value="#{generateAlbumPrice.priceGeneratorStatus}" /><br/>
+    </h:form>
     <h4>Add Label:</h4>
     <h:form>
         <h:inputText a:placeholder="record label id" value="#{displayAlbum.labelIdToAdd}" required="true" /><br/>

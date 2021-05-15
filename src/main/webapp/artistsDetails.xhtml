@@ -34,6 +34,7 @@
         <h:inputText a:placeholder="title" value="#{albumsForArtist.albumToCreate.title}" required="true" /> <br/>
         <h:inputText a:placeholder="song number" value="#{albumsForArtist.albumToCreate.songNumber}" required="true" /><br/>
         <h:inputText a:placeholder="length" value="#{albumsForArtist.albumToCreate.length}" required="true" /> <br/>
+        <h:inputText a:placeholder="price" value="#{albumsForArtist.albumToCreate.price}" required="true" /> <br/>
         <h:commandButton value="Add Album" action="#{albumsForArtist.createAlbum}" >
             <f:param name="artistId" value="#{albumsForArtist.artist.id}"/>
         </h:commandButton>

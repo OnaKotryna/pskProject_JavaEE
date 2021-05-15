@@ -32,8 +32,14 @@ public class Album implements Serializable{
     @Column(name = "LENGTH")
     private Integer length;
 
+    @Column(name="PRICE")
+    private double price;
+
     @ManyToMany
     @JoinTable(name = "ALBUM_RECORD")
     private List<RecordLabel> recordLabels = new ArrayList<>();
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 }
