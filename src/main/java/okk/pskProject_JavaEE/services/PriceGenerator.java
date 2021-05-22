@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 @ApplicationScoped
-public class PriceGenerator implements Serializable {
+public class PriceGenerator implements Serializable, IPriceGenerator {
 
     public double generatePrice(Album album){
         try{

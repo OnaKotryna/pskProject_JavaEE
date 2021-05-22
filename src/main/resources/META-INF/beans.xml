@@ -6,7 +6,16 @@
        bean-discovery-mode="annotated">
 
     <interceptors>
-        <class>okk.pskProject_JavaEE.interceptors.MethodLogger</class>
+        <class>
+            okk.pskProject_JavaEE.interceptors.MethodLogger
+        </class>
     </interceptors>
-
+    <decorators>
+        <class>
+            okk.pskProject_JavaEE.decorators.PriceWithVATDecorator
+        </class>
+        <class>
+            okk.pskProject_JavaEE.decorators.PriceWithShippingDecorator
+        </class>
+    </decorators>
 </beans>
