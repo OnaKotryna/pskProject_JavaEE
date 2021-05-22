@@ -17,10 +17,6 @@ public class ArtistsDAO {
         return em.createNamedQuery("Artist.findAll", Artist.class).getResultList();
     }
 
-    public void setEm(EntityManager em){
-        this.em = em;
-    }
-
     public Artist findOne(Integer id) {
         return em.find(Artist.class, id);
     }
@@ -28,4 +24,9 @@ public class ArtistsDAO {
     public void persist(Artist artist) {
         this.em.persist(artist);
     }
+
+    public Artist update(Artist artist) {
+        return em.merge(artist);
+    }
+
 }

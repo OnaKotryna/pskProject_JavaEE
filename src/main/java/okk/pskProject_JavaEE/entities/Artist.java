@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-
 @NamedQueries({
         @NamedQuery(name = "Artist.findAll", query = "select ar from Artist as ar")
 })
