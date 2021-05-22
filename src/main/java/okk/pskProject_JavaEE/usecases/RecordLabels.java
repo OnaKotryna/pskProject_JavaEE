@@ -3,6 +3,7 @@ package okk.pskProject_JavaEE.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import okk.pskProject_JavaEE.entities.RecordLabel;
+import okk.pskProject_JavaEE.interceptors.LoggedInvocation;
 import okk.pskProject_JavaEE.persistence.RecordLabelDAO;
 
 import javax.annotation.PostConstruct;
@@ -29,6 +30,7 @@ public class RecordLabels {
     }
 
     @Transactional
+    @LoggedInvocation
     public String createLabel(){
         this.labelDAO.persist(labelToCreate);
         return "labels?faces-redirect=true";

@@ -3,6 +3,7 @@ package okk.pskProject_JavaEE.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import okk.pskProject_JavaEE.entities.Album;
+import okk.pskProject_JavaEE.interceptors.LoggedInvocation;
 import okk.pskProject_JavaEE.persistence.AlbumsDAO;
 
 import javax.annotation.PostConstruct;
@@ -37,6 +38,7 @@ public class UpdateAlbumDetails implements Serializable {
     }
 
     @Transactional
+    @LoggedInvocation
     public String updateAlbumPrice() {
         try {
             albumsDAO.update(this.album);
@@ -46,6 +48,7 @@ public class UpdateAlbumDetails implements Serializable {
         return "/albumDetails.xhtml/albumId=" + this.album.getId() + "&faces-redirect=true";
     }
 
+    @LoggedInvocation
     @Transactional
     public String updateAlbumTitle(){
         try{

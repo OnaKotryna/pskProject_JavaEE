@@ -1,6 +1,7 @@
 package okk.pskProject_JavaEE.usecases;
 
 import okk.pskProject_JavaEE.entities.Album;
+import okk.pskProject_JavaEE.interceptors.LoggedInvocation;
 import okk.pskProject_JavaEE.services.PriceGenerator;
 
 import javax.enterprise.context.SessionScoped;
@@ -22,6 +23,7 @@ public class GenerateAlbumPrice implements Serializable {
 
     private CompletableFuture<Double> priceGenerationTask = null;
 
+    @LoggedInvocation
     public String generateNewAlbumPrice(Album album) {
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();

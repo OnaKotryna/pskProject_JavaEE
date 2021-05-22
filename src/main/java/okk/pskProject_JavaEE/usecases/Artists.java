@@ -3,6 +3,7 @@ package okk.pskProject_JavaEE.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import okk.pskProject_JavaEE.entities.Artist;
+import okk.pskProject_JavaEE.interceptors.LoggedInvocation;
 import okk.pskProject_JavaEE.persistence.ArtistsDAO;
 
 import javax.annotation.PostConstruct;
@@ -27,6 +28,7 @@ public class Artists {
     public void init() { loadAllArtists(); }
 
     @Transactional
+    @LoggedInvocation
     public String createArtist(){
         this.artistsDAO.persist(artistToCreate);
         return "index?faces-redirect=true";
