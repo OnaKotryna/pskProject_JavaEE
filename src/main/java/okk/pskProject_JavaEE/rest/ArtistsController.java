@@ -48,11 +48,14 @@ public class ArtistsController {
             if(existingArtist == null){
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
+
             existingArtist.setName(artistData.getName());
             existingArtist.setCountry(artistData.getCountry());
+
             artistsDAO.update(existingArtist);
+
             return Response.ok().build();
-        } catch ( OptimisticLockException olex){
+        } catch (OptimisticLockException ole){
             return  Response.status(Response.Status.CONFLICT).build();
         }
     }
@@ -61,9 +64,20 @@ public class ArtistsController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
-    public Response create(Artist artist) {
-        artistsDAO.persist(artist);
-        return Response.ok().build();
+    public Response create(ArtistDTO artistData) {
+        try{
+            Artist artist = new Artist();
+
+            artist.setName(artistData.getName());
+            artist.setCountry(artistData.getName());
+
+            artistsDAO.persist(artist);
+
+            return Response.ok().build();
+        } catch (OptimisticLockException ole) {
+            return Response.status(Response.Status.CONFLICT).build();
+        }
+
     }
 
 }
