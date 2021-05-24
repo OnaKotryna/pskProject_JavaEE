@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 @ApplicationScoped
-public class AlbumsDAO {
+public class AlbumsDAO implements IAlbumDAO{
 
     @Inject
     private EntityManager em;

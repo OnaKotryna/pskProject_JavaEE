@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 @ApplicationScoped
-public class RecordLabelDAO {
+public class RecordLabelDAO implements IRecordLabelDAO {
 
     @Inject
     private EntityManager em;

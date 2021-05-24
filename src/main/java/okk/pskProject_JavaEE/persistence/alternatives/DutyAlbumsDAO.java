@@ -1,6 +1,7 @@
 package okk.pskProject_JavaEE.persistence.alternatives;
 
 import okk.pskProject_JavaEE.entities.Album;
+import okk.pskProject_JavaEE.persistence.IAlbumDAO;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
@@ -12,7 +13,7 @@ import javax.persistence.EntityManager;
 @ApplicationScoped
 @Specializes
 @Alternative
-public class DutyAlbumsDAO extends VATAlbumsDAO{
+public class DutyAlbumsDAO extends VATAlbumsDAO implements IAlbumDAO {
 
     @Inject
     EntityManager em;
