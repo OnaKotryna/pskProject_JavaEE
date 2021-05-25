@@ -42,7 +42,7 @@ public class ArtistsController {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
-    public Response update(@PathParam("id") final Integer artistId, ArtistDTO artistData){
+    public Response update(@PathParam("id") final Integer artistId, ArtistDTO artistData) {
         try {
             Artist existingArtist = artistsDAO.findOne(artistId);
             if(existingArtist == null){
@@ -69,7 +69,7 @@ public class ArtistsController {
             Artist artist = new Artist();
 
             artist.setName(artistData.getName());
-            artist.setCountry(artistData.getName());
+            artist.setCountry(artistData.getCountry());
 
             artistsDAO.persist(artist);
 
