@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xml:lang="en" lang="en">
+<h:head>
+    <title>Album Details</title>
+</h:head>
+<h:body>
+    <h:link outcome="mybatis/artists" value="MyBatis"/>
+    <h:outputText value=" ||| "/>
+    <h:link outcome="labels" value="Labels"/>
+    <h:outputText value=" || "/>
+    <h:link outcome="index" value="Artists"/>
+    <h:outputText value=" | "/>
+    <h:link outcome="artistsDetails?artistId=#{displayAlbum.album.artist.id}" value="#{displayAlbum.album.artist.name}"/>
+    <h:outputText value=" | #{displayAlbum.album.title}"/>
+    <h2>#{displayAlbum.album.title} details: </h2>
+    <h:form>
+        <h:inputText a:placeholder="new title" value="#{updateAlbumDetails.album.title}" required="true" /><br/>
+        <h:commandButton value="Change Title" action="#{updateAlbumDetails.updateAlbumTitle()}">
+            <f:param name="albumId" value="#{updateAlbumDetails.album.id}"/>
+        </h:commandButton><br/>
+        <h:outputText value="Title was already set by other user. If you want to override it - try again." rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+    </h:form>
+    <h:outputText value="Artist: #{displayAlbum.album.artist.name}"/><br/>
+    <h:outputText value="Length: #{displayAlbum.album.length}"/><br/>
+    <h:outputText value="Track nr: #{displayAlbum.album.songNumber}"/><br/>
+    <h:outputText value="Price: #{displayAlbum.album.price}"/><br/>
+    <h:outputText value="Record Labels: "/><br/>
+    <ol>
+        <ui:repeat value="#{displayAlbum.album.recordLabels}" var="lab">
+            <li><h:outputText value="#{lab.label}"/></li>
+        </ui:repeat>
+    </ol> <br/>
+    <h3>Set Album Price</h3>
+    <h:form>
+        <h:outputText value="Price: "/>
+        <h:inputText a:placeholder="Enter the Price" value="#{updateAlbumDetails.album.price}" required="true" />
+        <h:commandButton value="Set Price" action="#{updateAlbumDetails.updateAlbumPrice()}">
+            <f:param name="albumId" value="#{updateAlbumDetails.album.id}" />
+        </h:commandButton><br/>
+        <h:outputText value="Price was already set by other user. If you want to override it - try again." rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+    </h:form>
+    <h:form>
+        <h:outputText value="Generate the Price of the Album?" /><br/>
+        <h:commandButton value="Generate" disabled="#{generateAlbumPrice.priceGeneratorRunning}" action="#{generateAlbumPrice.generateNewAlbumPrice(displayAlbum.album)}">
+            <f:param name="albumId" value="#{updateAlbumDetails.album.id}" />
+        </h:commandButton><br/>
+        <h:outputText value="#{generateAlbumPrice.priceGeneratorStatus}" /><br/>
+    </h:form>
+    <h4>Add Label:</h4>
+    <h:form>
+        <h:inputText a:placeholder="record label id" value="#{displayAlbum.labelIdToAdd}" required="true" /><br/>
+        <h:commandButton value="Add Record Label" action="#{displayAlbum.addLabel()}">
+            <f:param name="albumId" value="#{displayAlbum.album.id}"/>
+            <f:param name="labelId" value="#{displayAlbum.labelIdToAdd}"/>
+        </h:commandButton>
+    </h:form>
+    <h5>Record Label List:</h5>
+    <ol>
+        <ui:repeat value="#{recordLabels.allLabels}" var="lab">
+            <li><h:outputText value="#{lab.label}"/></li>
+        </ui:repeat>
+    </ol>
+</h:body>
+</html>
